@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCourseContext } from "../context/CourseContext";
 import { useClassContext } from "../context/ClassContext";
 
@@ -107,13 +107,15 @@ const Dashboard = () => {
   const resetEdit = () => {
     setEditingId(null);
     setEditType(null);
-  };  
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 text-slate-800">
       {/* HEADER */}
       <header className="bg-white shadow px-6 py-4 flex justify-between items-center">
-        <h1 className="text-xl font-bold tracking-wide">MIDAS TOUCH</h1>
+        <h1 className="text-xl font-bold tracking-wide">
+          <Link to={"/"}>MIDAS TOUCH</Link>
+        </h1>
         <button
           onClick={() => navigate("/")}
           className="text-red-600 font-semibold"
@@ -174,18 +176,23 @@ const Dashboard = () => {
                 </div>
 
                 <div className="flex flex-col gap-2 pt-1">
+                  <span
+                    className={`text-[9px] px-2 py-1 rounded-full font-bold uppercase tracking-wider ${m.active ? "bg-green-50 text-green-600" : "bg-gray-100 text-gray-400"}`}
+                  >
+                    {m.active ? "active" : "inactive"}
+                  </span>
                   <button
                     onClick={() => handleEditClick(m, "course")}
                     className="text-[10px] font-bold text-slate-400 hover:text-red-600 uppercase tracking-widest transition"
                   >
                     Edit
                   </button>
-                  <button
+                  {/* <button
                     onClick={() => deleteCourse(m.id)}
                     className="text-[10px] font-bold text-slate-400 hover:text-red-600 uppercase tracking-widest transition"
                   >
                     Delete
-                  </button>
+                  </button> */}
                 </div>
               </div>
             ))}
@@ -206,7 +213,10 @@ const Dashboard = () => {
               >
                 <div className="flex flex-col gap-1">
                   <h3 className="font-bold text-sm text-slate-900">
-                    {c.class_title} - <span className="font-medium capitalize">{c.class_type}</span>
+                    {c.class_title} -{" "}
+                    <span className="font-medium capitalize">
+                      {c.class_type}
+                    </span>
                   </h3>
                   <p className="text-[10px] font-bold text-red-600 uppercase tracking-widest mb-2">
                     {c.class_level}
@@ -293,6 +303,16 @@ const Dashboard = () => {
                 updateCourseField("course_queue", e.target.value)
               }
             />
+            <select
+              className="w-full border p-2 rounded"
+              value={courseData.active ? "active" : "inactive"}
+              onChange={(e) =>
+                updateCourseField("active", e.target.value === "active")
+              }
+            >
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
 
             <button className="w-full bg-red-600 text-white py-2 rounded">
               Save

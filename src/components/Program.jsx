@@ -1,8 +1,10 @@
 import { Link } from "react-router";
 import { useLang } from "../context/LanguageContext";
+import { useCourseContext } from "../context/CourseContext";
 
 const Program = () => {
   const { lang } = useLang();
+  const { courses } = useCourseContext();
 
   const programs = [
     {
@@ -47,6 +49,16 @@ const Program = () => {
     },
   ];
 
+  const activePrograms = programs.filter((program) => {
+    const matchingCourse = courses.find(course => course.course_title === program.title_en);
+    return matchingCourse && matchingCourse.active === true;
+  });
+  
+  console.log(courses);
+  
+  console.log(activePrograms);
+  
+
   return (
     <section id="programs" className="py-32 px-6 bg-white">
       <div className="max-w-6xl mx-auto">
@@ -66,7 +78,7 @@ const Program = () => {
 
         {/* List Content */}
         <div className="border-t-2 border-slate-900">
-          {programs.map((prog) => (
+          {activePrograms.map((prog) => (
             <div
               key={prog.id}
               className="group flex flex-col md:flex-row gap-8 py-16 border-b border-slate-100 transition-all duration-500 hover:bg-slate-50/80 hover:px-6"

@@ -66,14 +66,13 @@ const Portfolio = () => {
       </div>
 
       {/* RIGHT SIDE: Large Portrait with Split Effect */}
-      <div className="relative w-full md:w-2/5 h-[70vh] md:h-screen bg-slate-100 order-1 md:order-2 overflow-hidden">
-        {/* Placeholder for Teacher's Image */}
-        <div className="absolute inset-0 bg-slate-200 animate-pulse">
-          {/* Replace this div with an <img /> tag when ready */}
-          <div className="absolute inset-0 flex items-center justify-center text-slate-400 font-black text-xs tracking-widest">
-            PHOTO SPACE
-          </div>
-        </div>
+      <div className="relative w-full md:w-2/5 h-[60vh] sm:h-[70vh] md:h-screen bg-slate-100 order-1 md:order-2 overflow-hidden flex items-center justify-center">
+        {/* Teacher's Image */}
+        <img
+          src="/INSTRUCTOR_PROFILE.jpg"
+          alt="INSTRUCTOR_PROFILE"
+          className="w-full h-full object-cover object-center"
+        />
 
         {/* Large Background Initial */}
         <div className="absolute -bottom-10 -right-10 opacity-[0.05] select-none pointer-events-none">
