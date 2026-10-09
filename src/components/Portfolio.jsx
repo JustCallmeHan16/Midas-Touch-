@@ -57,16 +57,24 @@ const Portfolio = () => {
 
           {/* Social/Action Line */}
           <div className="pt-8">
-            <button className="group flex items-center gap-6 text-[10px] font-black tracking-[0.4em] text-slate-900 uppercase">
-              {lang === "en" ? "CONNECT NOW" : "ဆက်သွယ်ရန်"}
-              <div className="h-0.5 w-12 bg-red-700 group-hover:w-24 transition-all duration-500" />
-            </button>
+            <a
+              className="group inline-flex items-center justify-between gap-4 px-6 py-4 bg-slate-900 text-white text-xs font-black tracking-[0.3em] uppercase rounded-none transition-all duration-300 hover:bg-slate-800 hover:shadow-lg active:scale-95"
+              href="https://t.me/zahra_espanol"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Telegram"
+            >
+              <span>{lang === "en" ? "CONNECT NOW" : "ဆက်သွယ်ရန်"}</span>
+              <span className="transition-transform duration-300 group-hover:translate-x-1.5 text-slate-400 group-hover:text-white">
+                →
+              </span>
+            </a>
           </div>
         </div>
       </div>
 
       {/* RIGHT SIDE: Large Portrait with Split Effect */}
-      <div className="relative w-full md:w-2/5 h-[60vh] sm:h-[70vh] md:h-screen bg-slate-100 order-1 md:order-2 overflow-hidden flex items-center justify-center">
+      <div className="relative w-full md:w-2/5 aspect-4/5 md:h-screen bg-slate-100 order-1 md:order-2 overflow-hidden flex items-center justify-center">
         {/* Teacher's Image */}
         <img
           src="/INSTRUCTOR_PROFILE.jpg"

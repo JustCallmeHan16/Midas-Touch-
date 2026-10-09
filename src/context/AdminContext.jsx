@@ -10,7 +10,7 @@ import { auth } from "../lib/firebase_config";
 const AdminContext = createContext();
 const provider = new GoogleAuthProvider();
 
-const ADMINS = ["hanwinsolo2020@gmail.com"];
+const ADMINS = ["hanwinsolo2020@gmail.com", "mtlc010423@gmail.com"];
 
 export const AdminProvider = ({ children }) => {
   const [admin, setAdmin] = useState(null);
